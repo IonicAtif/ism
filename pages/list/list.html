@@ -1,0 +1,96 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>settings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+<h1>Details</h1>
+    <ion-list>
+	<ion-item class="form-input">
+            <ion-label>Name</ion-label>
+            <ion-input [(ngModel)]="name"></ion-input>
+        </ion-item>
+		<ion-item class="form-input">
+            <ion-label>Phone</ion-label>
+            <ion-input type="number" [(ngModel)]="phone"></ion-input>
+        </ion-item>
+		<ion-item class="form-input">
+            <ion-label>Division</ion-label>
+           <ion-select [(ngModel)]="division">
+      <ion-option [value]="divs.id" *ngFor="let divs of DivisionsRecord">{{divs.name}}</ion-option>
+    
+    </ion-select>
+		   
+        </ion-item>
+		<ion-item class="form-input">
+            <ion-label>Category</ion-label>
+           <ion-select [(ngModel)]="category">
+      <ion-option [value]="divs.id" *ngFor="let divs of CategorysRecord">{{divs.name}}</ion-option>
+    
+    </ion-select>
+
+        </ion-item>
+    <button  ion-button full (click)="addDetails()">Add _ Details</button>
+		
+	</ion-list >
+<h1>Division</h1>
+    <ion-list>
+	<ion-item class="form-input">
+            <ion-label>name</ion-label>
+            <ion-input [(ngModel)]="Division_name"></ion-input>
+        </ion-item>
+    <button  ion-button full (click)="addDivision()">Add _ Division</button>
+		
+	</ion-list >
+<h1 style="margin-top:26px;">Category</h1>	
+	<ion-list >
+	<ion-item class="form-input">
+            <ion-label>name</ion-label>
+            <ion-input [(ngModel)]="Category_name"></ion-input>
+        </ion-item>
+    <button  ion-button full (click)="addCategory()">Add _ Category</button>
+		
+	</ion-list>
+		<button  ion-button small (click)="ViewDivisions=!ViewDivisions">Divisions</button>
+	    <button  ion-button small (click)="ViewCategories=!ViewCategories">Categories</button>
+	    <button  ion-button small (click)="ViewDetails=!ViewDetails">Details</button>
+<div *ngIf="ViewDetails">
+<h1>Details</h1>
+
+	<ion-list *ngFor="let detail of DetailsRecord;let i=index;">
+	
+	{{i+1}}.	{{detail.name}}--{{detail.phone}}
+	</ion-list>
+	
+</div>
+		<div *ngIf="ViewCategories">
+	<h1>Categories</h1>
+
+	<ion-list *ngFor="let divs of CategorysRecord">
+	
+		{{divs.name}}
+	</ion-list>
+	</div>
+	<div *ngIf="ViewDivisions">
+	<h1>Divisions</h1>
+
+	<ion-list *ngFor="let divs of DivisionsRecord">
+	
+		{{divs.name}}
+	</ion-list>
+	</div>
+</ion-content>
